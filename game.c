@@ -1,6 +1,6 @@
 //Contributors
 //GP
-//
+//Ryan Rodriguez
 //
 
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 //place function prototypes here
-
+void RRlab(void);
 
 
 
@@ -334,6 +334,7 @@ int main(int argc, char *argv[])
                         }
 			case 61:
                         {
+				RRlab();
                                 puts("room61");
                                 break;
                         }
@@ -423,3 +424,7 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+void RRlab(void)
+{
+	printf("RRroom61\n");
+}

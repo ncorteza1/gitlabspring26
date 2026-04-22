@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 //place function prototypes here
-
+void jwFunc(void);
 
 
 
@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
 			}
 			case 7:
 			{
+				jwFunc();
 				puts("room7");
 				break;
 			}
@@ -423,3 +424,7 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+void jwFunc(void)
+{
+	printf("JW\n");
+}

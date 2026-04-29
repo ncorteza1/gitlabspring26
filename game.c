@@ -55,6 +55,8 @@ void brooklynstitt(void);
 
 
 
+void PogoAM(void);
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -235,6 +237,8 @@ int main(int argc, char *argv[])
 			}
 			case 31:
 			{
+				PogoAM();
+
 				puts("room31");
 				break;
 			}
@@ -474,6 +478,13 @@ int main(int argc, char *argv[])
 
 //place functions here
 
+
+
+
+void PogoAM(void)
+{
+	printf("AM\n");
+}
 void dcFun(void)
 {
 	printf("DC\n");
@@ -550,5 +561,6 @@ void printInitialsAjewett(void)
 void jgFun(void)
 {
 	printf("JGB");	
+
 }
 

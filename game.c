@@ -40,6 +40,7 @@ void printInitialsSMarkos(void);
 void brooklynstitt(void);
 void PogoAM(void);
 void dleyva14(void);
+void jmItsGoTime(void);
 
 int main(int argc, char *argv[])
 {
@@ -347,6 +348,7 @@ int main(int argc, char *argv[])
 			}
 			case 55:
 			{
+				jmItsGoTime();
 				puts("room55");
 				break;
 			}
@@ -610,7 +612,10 @@ void dleyva14(void)
 	printf("DL\n");
 }
 
-
+void jmItsGoTime(void)
+{
+	printf("JM\n");
+}
 
 
 

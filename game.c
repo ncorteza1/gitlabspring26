@@ -59,7 +59,8 @@ void gameroom30(void);
 
 void printInitialsAjewett(void);
 void jgFun(void);
-void printInitialsSMarkos(void);
+void room58SM(void);
+int getLitCount58SM(int candles[]);
 void brooklynstitt(void);
 void PogoAM(void);
 void aaGM(void);
@@ -446,7 +447,7 @@ int main(int argc, char *argv[])
 			}
 			case 58:
 			{
-				printInitialsSMarkos();
+				room58SM();
                                 puts("room58");
                                 break;
 			}
@@ -554,7 +555,225 @@ int main(int argc, char *argv[])
 }
 
 //place function definitions below this comment
+void room58SM(void)
+{
+	int candles[6] = {0, 0, 0, 0, 0, 0};
+	int choice = 0;
+	int decisions = 0;
+	int smoke = 0;
+	int litCount = 0;
+	int randomEvent = 0;
+	char *candleNames[6] = {"Candle 1", "Candle 2", "Candle 3", "Candle 4", "Candle 5", "Candle 6"};
 
+	printf("\nYou enter Room 58.\n");
+	printf("Six magic candles sit on a stone table.\n");
+	printf("You must survive five decisions to unlock the exit.\n");
+
+	while (decisions < 5)
+	{
+		printf("\nRoom 58 Status\n");
+		printf("Decision: %d of 5\n", decisions + 1);
+		printf("Smoke level: %d\n", smoke);
+		printf("Lit candles: %d\n", getLitCount58SM(candles));
+
+		if (decisions == 0)
+		{
+			printf("\nDecision 1: You see two candles glowing faintly.\n");
+			printf("1. Light Candle 1\n");
+			printf("2. Light Candle 2\n");
+			printf("Enter choice: ");
+			scanf("%d", &choice);
+
+			if (choice == 1)
+			{
+				candles[0] = 1;
+				printf("%s is now lit.\n", candleNames[0]);
+			}
+			else if (choice == 2)
+			{
+				candles[1] = 1;
+				printf("%s is now lit.\n", candleNames[1]);
+			}
+			else
+			{
+				printf("Invalid choice. Smoke rises.\n");
+				smoke++;
+			}
+		}
+		else if (decisions == 1)
+		{
+			printf("\nDecision 2: Smoke begins to fill the room.\n");
+			printf("1. Search for a hidden vent\n");
+			printf("2. Light Candle 3 quickly\n");
+			printf("Enter choice: ");
+			scanf("%d", &choice);
+
+			if (choice == 1)
+			{
+				randomEvent = rand() % 2;
+
+				if (randomEvent == 0)
+				{
+					printf("You found a vent. The smoke level goes down.\n");
+
+					if (smoke > 0)
+					{
+						smoke--;
+					}
+				}
+				else
+				{
+					printf("The vent was blocked. Smoke rises.\n");
+					smoke++;
+				}
+			}
+			else if (choice == 2)
+			{
+				candles[2] = 1;
+				printf("%s is now lit.\n", candleNames[2]);
+			}
+			else
+			{
+				printf("Invalid choice. Smoke rises.\n");
+				smoke++;
+			}
+		}
+		else if (decisions == 2)
+		{
+			printf("\nDecision 3: You find a hidden spark on the floor.\n");
+			printf("1. Use it on Candle 4\n");
+			printf("2. Save it and look around\n");
+			printf("Enter choice: ");
+			scanf("%d", &choice);
+
+			if (choice == 1)
+			{
+				candles[3] = 1;
+				printf("%s is now lit.\n", candleNames[3]);
+			}
+			else if (choice == 2)
+			{
+				randomEvent = rand() % 3;
+
+				if (randomEvent == 0)
+				{
+					printf("The spark jumps to Candle 5.\n");
+					candles[4] = 1;
+				}
+				else if (randomEvent == 1)
+				{
+					printf("The spark disappears. Smoke rises.\n");
+					smoke++;
+				}
+				else
+				{
+					printf("The spark reveals a clue on the wall.\n");
+				}
+			}
+			else
+			{
+				printf("Invalid choice. Smoke rises.\n");
+				smoke++;
+			}
+		}
+		else if (decisions == 3)
+		{
+			printf("\nDecision 4: The wall says, 'The hidden candle opens the way.'\n");
+			printf("1. Search for Candle 6\n");
+			printf("2. Ignore the clue and wait\n");
+			printf("Enter choice: ");
+			scanf("%d", &choice);
+
+			if (choice == 1)
+			{
+				randomEvent = rand() % 2;
+
+				if (randomEvent == 0)
+				{
+					printf("You found Candle 6 and lit it.\n");
+					candles[5] = 1;
+				}
+				else
+				{
+					printf("You found dust instead. Smoke rises.\n");
+					smoke++;
+				}
+			}
+			else if (choice == 2)
+			{
+				printf("Waiting was dangerous. Smoke rises.\n");
+				smoke++;
+			}
+			else
+			{
+				printf("Invalid choice. Smoke rises.\n");
+				smoke++;
+			}
+		}
+		else if (decisions == 4)
+		{
+			printf("\nDecision 5: The exit begins to glow.\n");
+			printf("1. Try to open the exit\n");
+			printf("2. Light one more candle first\n");
+			printf("Enter choice: ");
+			scanf("%d", &choice);
+
+			if (choice == 1)
+			{
+				printf("You try to open the exit.\n");
+			}
+			else if (choice == 2)
+			{
+				randomEvent = rand() % 6;
+				candles[randomEvent] = 1;
+				printf("%s lights up from the final spark.\n", candleNames[randomEvent]);
+			}
+			else
+			{
+				printf("Invalid choice. Smoke rises.\n");
+				smoke++;
+			}
+		}
+
+		decisions++;
+		litCount = getLitCount58SM(candles);
+
+		if (smoke >= 3)
+		{
+			printf("The room fills with smoke. You run back to the hallway.\n");
+			return;
+		}
+	}
+
+	litCount = getLitCount58SM(candles);
+
+	if (litCount >= 4)
+	{
+		printf("The candles glow together and unlock the exit.\n");
+		printf("You escape Room 58 and return to the hallway.\n");
+	}
+	else
+	{
+		printf("Not enough candles are lit.\n");
+		printf("You return to the hallway.\n");
+	}
+}
+
+int getLitCount58SM(int candles[])
+{
+	int i = 0;
+	int count = 0;
+
+	for (i = 0; i < 6; i++)
+	{
+		if (candles[i] == 1)
+		{
+			count++;
+		}
+	}
+
+	return count;
+}
 
 //dcortez function definintion
 typedef struct

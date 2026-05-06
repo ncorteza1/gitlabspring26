@@ -75,6 +75,9 @@ void stanPush(void);
 void printdAfeworkIntials(void);
 void kwillett48(void);
 void ncInitial(void);
+
+void phas22(void);
+
 void RT_room57(void);
 void RT_playCupRound(void);
 void mtorres(void);
@@ -315,6 +318,7 @@ int main(int argc, char *argv[])
 			}
 			case 37:
 			{
+				phas22();
 				puts("room37");
 				break;
 			}
@@ -1573,6 +1577,12 @@ void stanPush(void)
 }
 
 
+void phas22(void)
+{
+	printf("JR");
+}
+
+
 void WMGwent(void)
 {
 	printf("WM \n");
@@ -1652,6 +1662,7 @@ void RT_playCupRound(void)
         printf("Wrong cup. The ball was under cup %d.\n", ballSpot + 1);
     }
 }
+
 
 
 

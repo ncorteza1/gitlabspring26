@@ -89,6 +89,9 @@ void WMGwent(void);
 void nhfun(void);
 void printInitialsAngelM(void);
 
+void dGMyName(void);
+
+
 
 
 int main(int argc, char *argv[])
@@ -455,7 +458,8 @@ int main(int argc, char *argv[])
 			}
 			case 60:
 			{
-				puts("room60");
+				dGMyName();
+								puts("room60");
                                 break;
 			}
 			case 61:
@@ -1171,6 +1175,10 @@ void theSigmaMethod(void)
 
 }
 
+void dGMyName(void)
+{
+	printf("DG\n");
+}
 
 void folksamEV(void) 
 {
